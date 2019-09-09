@@ -1,44 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
+
+import 'consulta_page.dart';
 
 class CalendarPage extends StatefulWidget {
+
   @override
   _CalendarPageState createState() => _CalendarPageState();
 }
 
+
 class _CalendarPageState extends State<CalendarPage> {
+
+  final _calendarController = CalendarController();
+  DateTime dateTime;
+
+  @override
+  void dispose() {
+    _calendarController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          title: Text('Bem Vindo de Volta!'),
-          centerTitle: true,
-        ),
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            // sets the background color of the `BottomNavigationBar`
-            canvasColor: Color(0xff5e4ca0),),
-          // sets the active color of the `BottomNavigationBar` if `B),
-          child: BottomNavigationBar(items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('')),
-            BottomNavigationBarItem(icon: Icon(Icons.date_range), title: Text('')),
-            BottomNavigationBarItem(icon: Icon(Icons.chat), title: Text('')),
-            BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('')),
-            BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('')),
-          ],
-            backgroundColor: Color(0xff5e4ca0),),
-        ),
-        body: Stack(
-          children: <Widget>[
-            Container(
-              height: 230,
-              decoration: BoxDecoration(
-                  color: Color(0xff5e4ca0),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50))),
-            ),
-          ],
-        ));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Hermes'),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: <Widget>[
+          Text('Selecione o dia que deseja realizar a consulta!'),
+          TableCalendar(calendarController: _calendarController, onDaySelected: (dateTime, context){
+            _dateSelected(dateTime);
+          },),
+        ],
+      ),
+    );
+  }
+
+  _dateSelected(date){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ConsultaPage(dateTime: date)));
   }
 }
