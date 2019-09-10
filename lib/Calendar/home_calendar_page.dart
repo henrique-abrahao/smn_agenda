@@ -24,7 +24,7 @@ class _HomeCalendarPageState extends State<HomeCalendarPage> {
               _goCalendar();
             },
             child: Icon(Icons.date_range),
-            backgroundColor: Color(0xff5e4ca0),
+            backgroundColor: Color(0xff1565c0),
           ),
         ),
       ),

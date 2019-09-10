@@ -2,6 +2,8 @@ import 'package:agenda_smn/Calendar/calendar_page.dart';
 import 'package:agenda_smn/Home/home_page.dart';
 import 'package:flutter/material.dart';
 
+import '../Calendar/home_calendar_page.dart';
+
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,7 @@ class MyDrawer extends StatelessWidget {
                   ),
               ),
               GestureDetector(
-                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => CalendarPage() ));},
+                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => HomeCalendarPage() ));},
                 child: Padding(
                   padding: EdgeInsets.only(top: 28),
                   child:  Row(

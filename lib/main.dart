@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeCalendarPage(),
-      theme: ThemeData(primaryColor: Color(0xff5e4ca0)),
+      home: HomePage(),
+      theme: ThemeData(primaryColor: Color(0xff1565c0)),
     );
   }
 }
